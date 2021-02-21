@@ -42,7 +42,7 @@ jobs:
       run: mvn -f pom.xml clean test
   package:
     runs-on: ubuntu-20.04
-    needs: compile
+    needs: test
     name: Package project
     steps:
     - uses: actions/checkout@v1
