@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  database:
+    image: mongo:4.4
+    ports:
+    - 27017:27017
+
+  api-appgate-calculator:
+    build:
+        context: .
+    environment:
+      - DATABASE_HOST=database
+      - WAIT_FOR_DB=database:27017
+    depends_on:
+      - database
+    ports:
+    - 8080:8080
+    - 9010:9010
