@@ -1,0 +1,66 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+name: Pipeline API appgate calculator
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        java: [11]
+    name: Java ${{ matrix.java }} compile
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup java
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - run: mvn -f pom.xml clean compile
+  build:
+    runs-on: ubuntu-20.04
+    needs: compile
+    name: Build and unit tests
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Build and test project
+      run: mvn -f pom.xml clean test
+    - name: Upload Maven build artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: artifact
+        path: target/api-appgate-calculator-0.0.1-SNAPSHOT.jar
+  deploy:
+    runs-on: ubuntu-20.04
+    needs: build
+    name: Build Docker container and deploy to Kubernetes
+    steps:
+    - uses: actions/checkout@v1
+    - name: Download Maven build artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: artifact
+    - name: Build Docker container
+      run: |
+        mkdir -p api-appgate-calculator/target
+        mv artifact/api-appgate-calculator-0.0.1-SNAPSHOT.jar api-appgate-calculator/target
+        docker build -t appgate/api-appgate-calculator .
+    - name: Push Docker images
+      run: echo "Pushing Docker image to Container Registry (e.g. ECR)"
+    - name: Deploy application
+      run: echo "Deploying application (e.g. Kubernetes)"
