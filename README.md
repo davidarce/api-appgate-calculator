@@ -37,7 +37,7 @@ Now you can access the API with base-path: http://localhost:8080/api/calculator
 
 # Endpoints
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/77a27fdf5f9392b53810)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/77a27fdf5f9392b53810)
 
 ```
 Create Session:
