@@ -12,8 +12,9 @@ A RESTful API for calculate operations like ADD, SUBTRACT, MULTIPLY, DIVIDE and 
 ## Running
 ### Prerequisites
 - Java 11
-- Maven 3+  
+- Maven 3+
 - Mongodb installed in your local machine -> localhost:27017
+- Docker since you want to run the app in a container
 
 ## How to use locally
 
@@ -36,7 +37,7 @@ Now you can access the API with base-path: http://localhost:8080/api/calculator
 
 # Endpoints
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e9dc701c42cd2fba226e#?env%5BTYBA%5D=W3sia2V5IjoibG9jYWxob3N0IiwidmFsdWUiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJlbmFibGVkIjp0cnVlfV0=)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.getpostman.com/collections/77a27fdf5f9392b53810)
 
 ```
 Create Session:
