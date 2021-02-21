@@ -76,7 +76,7 @@ jobs:
     - name: Build Docker container
       run: |
         mkdir -p api-appgate-calculator/target
-        mv artifact/api-appgate-calculator-0.0.1-SNAPSHOT.jar api-appgate-calculator/target
+        mv artifact/api-appgate-calculator-0.0.1-SNAPSHOT.jar target
         docker build -t appgate/api-appgate-calculator .
     - name: Push Docker images
       run: echo "Pushing Docker image to Container Registry (e.g. ECR)"
