@@ -2,5 +2,6 @@
 	"jvmArguments":"-Xms256m -Xmx256m",
 	"debugEnabled": false,
 	"jmxEnabled": true,
+	"newRelicEnabled": true,
 	"mainClass": "com.appgate.api.calculator.AppInitializer"
 }

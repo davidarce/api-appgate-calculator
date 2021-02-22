@@ -81,6 +81,11 @@ jobs:
       with:
         name: artifact
         path: target/api-appgate-calculator-0.0.1-SNAPSHOT.jar
+    - name: Upload Newrelic jar dependency artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: newrelic-artifact
+        path: target/dependency/newrelic.jar
   deploy:
     runs-on: ubuntu-20.04
     needs: package
@@ -91,10 +96,16 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: artifact
+    - name: Download Newrelic jar dependecy artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: newrelic-artifact
     - name: Build Docker container
       run: |
         mkdir -p target
         mv artifact/api-appgate-calculator-0.0.1-SNAPSHOT.jar target
+        mkdir -p target/dependency
+        mv newrelic-artifact/newrelic.jar target/dependency
         docker build -t appgate/api-appgate-calculator .
     - name: Push Docker images
       run: echo "Pushing Docker image to Container Registry (e.g. ECR)"

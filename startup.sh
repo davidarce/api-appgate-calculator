@@ -5,16 +5,24 @@ MAINCLASS=$(jq --raw-output '.mainClass' $APP_PATH/deploy-properties.json)
 
 JVMARGS=$(jq --raw-output '.jvmArguments' $APP_PATH/deploy-properties.json)
 
+# NewRelic
+NEW_RELIC_ENABLED=$(jq --raw-output '.newRelicEnabled' $APP_PATH/deploy-properties.json)
+if [[ $NEW_RELIC_ENABLED = "true"  ]]; then
+  JVMARGS+="  -javaagent:${APP_PATH}/newrelic/newrelic.jar \
+    -Dnewrelic.config.file=${APP_PATH}/newrelic.yml \
+    -Dnewrelic.environment=production"
+fi
+
 # JMX and Debug
 SPECIAL_PORT="9010"
 DEBUG_ENABLED=$(jq --raw-output '.debugEnabled' $APP_PATH/deploy-properties.json)
 JXM_ENABLED=$(jq --raw-output '.jmxEnabled' $APP_PATH/deploy-properties.json)
 
-if [[ $DEBUG_ENABLED == "true"  ]]; then
+if [[ $DEBUG_ENABLED = "true"  ]]; then
 
   JVMARGS+="  -agentlib:jdwp=transport=dt_socket,address=*:${SPECIAL_PORT},server=y,suspend=n"
 
-elif [[ $JXM_ENABLED == "true" ]]; then
+elif [[ $JXM_ENABLED = "true" ]]; then
 
   JVMARGS+="  -Dcom.sun.management.jmxremote=true \
               -Dcom.sun.management.jmxremote.port=${SPECIAL_PORT} \

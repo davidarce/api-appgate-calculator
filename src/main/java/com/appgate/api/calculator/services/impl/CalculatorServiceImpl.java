@@ -117,7 +117,7 @@ public class CalculatorServiceImpl implements CalculatorService {
         BigDecimal result = operands.get(0);
         for (int i = 1; i < operands.size(); i++) {
             BigDecimal nextOperand = operands.get(i);
-            if (nextOperand.intValue() != BigDecimal.ZERO.intValue()) {
+            if (nextOperand.doubleValue() != BigDecimal.ZERO.doubleValue()) {
                 result = result.divide(operands.get(i), MathContext.DECIMAL64);
             } else {
                 throw new DivisionByZeroException();
