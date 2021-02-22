@@ -46,6 +46,22 @@ Como mencioné anteriormente todo depende de los requerimientos, y la solución 
 
 El escalamiento lo haríamos vertical en caso de que el tráfico aumente bastante.
 
+## 🚦 Pipeline CI/CD
+
+Para el proceso de integración continua usamos github actions, una vez se hace un push hacia la rama automaticamente comienza la validacion y despliegue de la aplicacion el cual esta construido con los siguientes steps:
+
+- Compilación
+- Pruebas unitarias
+- Pruebas de integración
+- Empaquetado/Instalación de la aplicación (jar)
+- Construcción de la imagen de docker
+- Push de la imagen de docker a un repositorio (Docker Hub)
+- Despliegue
+
+<p align="center">
+ <img width="700" height="450" src="./public/images/pipeline.png">
+</p>
+
 ## 💻 Tecnologías usadas
 - Java 11
 - Spring framework
