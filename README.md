@@ -91,6 +91,12 @@ java -jar target/api-appgate-calculator-0.0.1-SNAPSHOT.jar
 ## ⛴ Cómo ejecutarla con with docker
 
 ```
+git clone https://github.com/davidarce/api-appgate-calculator.git   
+
+cd api-appgate-calculator
+
+mvn clean package
+
 docker-compose up -d --build 
 ```
 
