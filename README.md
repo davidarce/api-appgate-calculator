@@ -197,7 +197,7 @@ GET /api/calculator/a43dddcf-c931-4845-8662-b2eca2847bc4/transactions
 
 En el siguiente link se puede visualizar la documentación con OpenAPI [URL](http://localhost:8080/api/calculator/documentation)
 
-# 👀 Observabilidad API con Newrelic
+## 👀 Observabilidad API con Newrelic
 
 Newrelic una plataforma de observabilidad sencilla pero potente que nos ayuda con el monitoreo de nuestra aplicación, en esta plataforma podemos ver los datos de desempeño, infraestructura, trace de errores y mucho más
 
@@ -218,5 +218,5 @@ Podemos visualizar las transacciones en tiempo real
 ### Errores de la aplicación
 
 <p align="center">
- <img width="700" height="450" src="./public/images/newrelic-errors.png.png">
+ <img width="700" height="450" src="./public/images/newrelic-errors.png">
 </p>
