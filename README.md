@@ -1,7 +1,7 @@
-# 👋 Appgate calculator API
+## 👋 Appgate calculator API
 A RESTful API para calcular operaciones como ADD, SUBTRACT, MULTIPLY, DIVIDE and EXP
 
-# ⛰ Escalabilidad de la API
+## ⛰ Escalabilidad de la API
 
  - La API está construida bajo el estilo de arquitectura REST, lo que significa que está totalmente desacoplada y cumple con los conceptos de "Single responsibility" y "Separation of concerns"
 
@@ -10,10 +10,10 @@ A RESTful API para calcular operaciones como ADD, SUBTRACT, MULTIPLY, DIVIDE and
  - Finalmente para escalar horizontalmente (scaling out) la API implementaremos un Load balancer para que administre y enrute el tráfico hacia los distintos nodos que tengamos ejecutándose. El cliente tendrá un sólo punto de acceso que sería una API gateway(nuestro load balancer).
 
 
-![Arquitectura](./public/images/arquitectura.png){:height="400px" width="400px"}
+![Arquitectura](./public/images/arquitectura.png)
 
 
-# 📝 Atributos Relevantes de calidad 
+## 📝 Atributos Relevantes de calidad 
 
 - Escalabilidad
   
@@ -112,9 +112,9 @@ Auditory transactions
 404 Not Found - The requested resource does not exist
 500 Internal Server error - The server has encountered a situation it doesn't know how to handle.
 ```
-# Examples
+## Examples
 
-## Create Session
+### Create Session
 
 ###### Request
 
@@ -128,7 +128,7 @@ POST /api/calculator/session
     "sessionId": "a43dddcf-c931-4845-8662-b2eca2847bc4"
 }
 ```
-## Add Operands
+### Add Operands
 
 ###### Request
 
@@ -149,7 +149,7 @@ Body
 202 Accepted
 ```
 
-## Result operation
+### Result operation
 ###### Request
 
 ```
@@ -163,7 +163,7 @@ GET /api/calculator/a43dddcf-c931-4845-8662-b2eca2847bc4/result?operator=ADD
 }
 ```
 
-## Auditory transactions
+### Auditory transactions
 ###### Request
 
 ```
@@ -192,6 +192,6 @@ GET /api/calculator/a43dddcf-c931-4845-8662-b2eca2847bc4/transactions
 ]
 ```
 
-# 📚 Documentation API
+## 📚 Documentation API
 
 En el siguiente link se puede visualizar la documentación con OpenAPI [URL](http://localhost:8080/api/calculator/documentation)
