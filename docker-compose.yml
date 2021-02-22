@@ -8,6 +8,7 @@ services:
   api-appgate-calculator:
     build:
         context: .
+        dockerfile: .docker/Dockerfile.local
     environment:
       - DATABASE_HOST=database
       - WAIT_FOR_DB=database:27017

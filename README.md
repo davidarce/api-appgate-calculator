@@ -65,19 +65,22 @@ Para el proceso de integración continua usamos github actions, una vez se hace 
 ## 💻 Tecnologías usadas
 - Java 11
 - Spring framework
+- Spring AOP
 - Spring Boot
-- Mongodb
+- Newrelic
+- MongoDB
 - JUnit 5 & Karate for unit and Integration test
 - Docker for deploying
+- Docker compose para ejecutar la API en local
 
 ## ✊ Ejecutando la API
 ### Prerrequisitos
 - Java 11
 - Maven 3+
-- Mongodb instalado en la maquina local localhost:27017
-- Docker si se quiere ejcutar la applicación en un contenedor
+- Mongodb instalado en la máquina local y ejecutándose en localhost:27017
+- Docker si se quiere ejecutar la aplicación en un contenedor
 
-## 🔨 Cómo usarla localmente
+## 🔨 ¿Cómo usarla localmente?
 
 ```
 git clone https://github.com/davidarce/api-appgate-calculator.git   
@@ -88,7 +91,7 @@ mvn clean package
 
 java -jar target/api-appgate-calculator-0.0.1-SNAPSHOT.jar
 ```
-## ⛴ Cómo ejecutarla con with docker
+## ⛴ ¿Cómo ejecutarla con docker-compose?
 
 ```
 git clone https://github.com/davidarce/api-appgate-calculator.git   
@@ -125,7 +128,7 @@ Auditory transactions
 
 ```
 
-## Http Status Code Summary
+## Http Status Code Resumen
 
 ```
 200 OK - Everything worked as expected
@@ -135,7 +138,7 @@ Auditory transactions
 404 Not Found - The requested resource does not exist
 500 Internal Server error - The server has encountered a situation it doesn't know how to handle.
 ```
-## Examples
+## Ejemplos
 
 ### Create Session
 
