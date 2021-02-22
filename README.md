@@ -1,15 +1,19 @@
-# Appgate calculator API
+# 👋 Appgate calculator API
 A RESTful API para calcular operaciones como ADD, SUBTRACT, MULTIPLY, DIVIDE and EXP
 
-# Escalabilidad de la API
+# ⛰ Escalabilidad de la API
 
  - La API está construida bajo el estilo de arquitectura REST, lo que significa que está totalmente desacoplada y cumple con los conceptos de "Single responsibility" y "Separation of concerns"
 
- - Este estilo de arquitectura nos permite desacoplar el cliente del servidor, y la escalabilidad se hereda por si sola. Al implementar una API bajo este estilo de arquitectura sin estado, podemos integrar diferentes componentes que se encargaran de otra capa a nivel fisico de la application por ejemplo, la base de datos se encargará de almacenar la información del usuario y sesiones ejecutándose en otra máquina, esto nos permite escalar verticalmente cuando el tráfico aumente.
+ - Este estilo de arquitectura nos permite desacoplar el cliente del servidor, y la escalabilidad se hereda por si sola. Al implementar una API bajo este estilo de arquitectura sin estado, podemos integrar diferentes componentes que se encargaran de otra capa a nivel fisico de la aplicación por ejemplo, la base de datos se encargará de almacenar la información del usuario y sesiones ejecutándose en otra máquina, esto nos permite escalar verticalmente cuando el tráfico aumente.
 
- - Finalmente para escalar verticalmente la API nos ayudaremos de un Load Balancer para que administre y enrute el tráfico hacia los distintos nodos que tengamos ejecutándose. El cliente tendra un solo punto de acceso API gateway(load balancer) por lo que no tiene que preocuparse de que instancia consumir.
+ - Finalmente para escalar horizontalmente (scaling out) la API implementaremos un Load balancer para que administre y enrute el tráfico hacia los distintos nodos que tengamos ejecutándose. El cliente tendrá un sólo punto de acceso que sería una API gateway(nuestro load balancer).
 
-# Atributos Relevantes de calidad 
+
+![Arquitectura](./public/images/arquitectura.png){:height="400px" width="400px"}
+
+
+# 📝 Atributos Relevantes de calidad 
 
 - Escalabilidad
   
@@ -21,13 +25,13 @@ A RESTful API para calcular operaciones como ADD, SUBTRACT, MULTIPLY, DIVIDE and
 
 - Balanceo de carga
 
-### Posibles trade-offs
+### 🤔 Posibles trade-offs
 
 Construir aplicaciones distribuidas, altamente escalables tiene sus complicaciones al momento de administrarlas y monitorearlas esto se complica exponencialmente y se debe contar con una infraestructura muy bien estandarizada y automatizada. 
 
 Afortunadamente hoy en dia existen varias herramientas y nuevas areas que nos facilitan la administración, despliegue y monitoreo de nuestras aplicaciones como por ejemplo soluciones cloud para eliminar soluciones on promise, centralization de logs con elasticsearch, despliegue continuo con jenkins, gitlab pipelines, github actions, monitoreo de aplicaciones con newrelic, orquestación de servicios con kubernetes y knative etc. 
 
-#### Importante
+#### ❗️ Importante
 Es importante tener en cuenta que no siempre este tipo de arquitecturas son las que debemos seguir, para algunas compañias las aplicaciones monolíticas sirven perfectamente para la solución que quieren ofrecer, debemos analizar muy bien nuestros requerimientos y seleccionar la arquitectura correcta
 
 Por ejemplo:
@@ -35,13 +39,13 @@ Por ejemplo:
 - Si queremos construir aplicaciones para nuestra organización de uso privado una "Single tier application" se adaptaría muy bien, ya que no esperamos manejar bastante tráfico. 
 - Por el contrario si tenemos casos de usos complejos, la aplicacion tiene varios componentes tales como mensajera, chats en tiempo real, video streaming etc, y el tráfico incrementará exponencialmente en el futuro una arquitectura de micro-servicios funcionaría perfectamente.
 
-## ¿Utilizaría un tipo de API diferente a REST?
+## 🤓 ¿Utilizaría un tipo de API diferente a REST?
 
 Como mencioné anteriormente todo depende de los requerimientos, y la solución que queramos ofrecerle a nuestro cliente final. Para esta prueba no veo necesario el uso de una REST api, podríamos utilizar una arquitectura de dos capas o "Two tier application". Nuestra interfaz y lógica de negocio pueden ir integradas en una misma aplicación y maquina, y nuestra capa de datos puede correr en otra máquina por el hecho de que debemos persistir la información de las sesiones, operaciones y transacciones de nuestros usuarios.
 
 El escalamiento lo haríamos vertical en caso de que el tráfico aumente bastante.
 
-## Tecnologías usadas
+## 💻 Tecnologías usadas
 - Java 11
 - Spring framework
 - Spring Boot
@@ -49,14 +53,14 @@ El escalamiento lo haríamos vertical en caso de que el tráfico aumente bastant
 - JUnit 5 & Karate for unit and Integration test
 - Docker for deploying
 
-## Ejecutando la API
+## ✊ Ejecutando la API
 ### Prerrequisitos
 - Java 11
 - Maven 3+
 - Mongodb instalado en la maquina local localhost:27017
 - Docker si se quiere ejcutar la applicación en un contenedor
 
-## Cómo usarla localmente
+## 🔨 Cómo usarla localmente
 
 ```
 git clone https://github.com/davidarce/api-appgate-calculator.git   
@@ -67,15 +71,15 @@ mvn clean package
 
 java -jar target/api-appgate-calculator-0.0.1-SNAPSHOT.jar
 ```
-## Cómo ejecutarla con with docker
+## ⛴ Cómo ejecutarla con with docker
 
 ```
-docker-compose -d up --build 
+docker-compose up -d --build 
 ```
 
 Ahora puedes acceder la API con base-path: http://localhost:8080/api/calculator
 
-# Endpoints
+# 🔛 Endpoints
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/77a27fdf5f9392b53810)
 
@@ -188,6 +192,6 @@ GET /api/calculator/a43dddcf-c931-4845-8662-b2eca2847bc4/transactions
 ]
 ```
 
-# Documentation API
+# 📚 Documentation API
 
 En el siguiente link se puede visualizar la documentación con OpenAPI [URL](http://localhost:8080/api/calculator/documentation)
