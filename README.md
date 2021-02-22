@@ -98,8 +98,6 @@ git clone https://github.com/davidarce/api-appgate-calculator.git
 
 cd api-appgate-calculator
 
-mvn clean package
-
 docker-compose up -d --build 
 ```
 
