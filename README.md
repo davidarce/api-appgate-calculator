@@ -10,8 +10,9 @@ A RESTful API para calcular operaciones como ADD, SUBTRACT, MULTIPLY, DIVIDE and
  - Finalmente para escalar horizontalmente (scaling out) la API implementaremos un Load balancer para que administre y enrute el tráfico hacia los distintos nodos que tengamos ejecutándose. El cliente tendrá un sólo punto de acceso que sería una API gateway(nuestro load balancer).
 
 
-![Arquitectura](./public/images/arquitectura.png)
-
+<p align="center">
+ <img width="700" height="450" src="./public/images/arquitectura.png">
+</p>
 
 ## 📝 Atributos Relevantes de calidad 
 
