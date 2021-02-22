@@ -59,7 +59,7 @@ Para el proceso de integración continua usamos github actions, una vez se hace 
 - Despliegue
 
 <p align="center">
- <img width="700" height="450" src="./public/images/pipeline.png">
+ <img src="./public/images/pipeline.png">
 </p>
 
 ## 💻 Tecnologías usadas
